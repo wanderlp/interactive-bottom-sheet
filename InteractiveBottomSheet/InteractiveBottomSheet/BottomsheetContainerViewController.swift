@@ -15,9 +15,10 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
     // MARK: - Initialization
     public init(contentViewController: Content,
                 bottomSheetViewController: BottomSheet,
-                bottomSheetconfiguration: BottomSheetConfiguration) {
+                bottomSheetConfiguration: BottomSheetConfiguration) {
         self.contentViewController = contentViewController
         self.bottomSheetViewController = bottomSheetViewController
+        self.configuraton = bottomSheetConfiguration
         
         super.init(nibName: nil, bundle: nil)
     }
