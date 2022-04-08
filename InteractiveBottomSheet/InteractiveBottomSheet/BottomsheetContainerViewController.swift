@@ -39,7 +39,7 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
         let initialOffset: CGFloat
     }
     
-    private let configuraton: BottomSheetConfiguration
+    private let configuration: BottomSheetConfiguration
     
     // MARK: - State
     // BottomSheetState manages the state of the bottom
@@ -69,5 +69,48 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
     // MARK: - UIGestureRecognizer Delegate
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+    
+    // Children view controllers
+    private func setupUI() {
+        // 1
+        self.addChild(contentViewController)
+        self.addChild(bottomSheetViewController)
+        
+        // 2
+        self.view.addSubview(contentViewController.view)
+        self.view.addSubview(bottomSheetViewController.view)
+        
+        // 3
+        bottomSheetViewController.view.addGestureRecognizer(panGesture)
+        
+        // 4
+        contentViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        bottomSheetViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        // 5
+        NSLayoutConstraint.activate([
+            contentViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            contentViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            contentViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor),
+            contentViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
+        
+        // 6
+        contentViewController.didMove(toParent: self)
+        
+        // 7
+        topConstraint = bottomSheetViewController.view.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -configuration.initialOffset)
+        
+        // 8
+        NSLayoutConstraint.activate([
+            bottomSheetViewController.view.heightAnchor.constraint(equalToConstant: configuration.height),
+            bottomSheetViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            bottomSheetViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            topConstraint
+        ])
+        
+        // 9
+        bottomSheetViewController.didMove(toParent: self)
     }
 }
