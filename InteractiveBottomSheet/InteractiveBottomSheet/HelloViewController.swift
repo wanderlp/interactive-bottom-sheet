@@ -4,6 +4,7 @@
 //
 //  Created by Wanderson López on 8/04/22.
 //
+//  Shows a gray view
 
 import UIKit
 
