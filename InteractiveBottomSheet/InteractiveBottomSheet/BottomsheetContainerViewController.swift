@@ -234,7 +234,7 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
                     //     upwards. If this is true, bottom sheet should remain
                     //     shown
                     if velocity.y < 0 {
-                        selft.showBottomSheet()
+                        self.showBottomSheet()
                     } else if yTranslationMagnitude >= configuration.height / 2 || velocity.y > 1000 {
                         // 2 - If the user moved the bottom sheet more than half
                         //     or its maximum height, or the y velocity is higher
