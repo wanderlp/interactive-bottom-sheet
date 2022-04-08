@@ -13,7 +13,9 @@ import UIKit
 open class BottomSheetContainerViewController<Content: UIViewController, BottomSheet: UIViewController>: UIViewController {
     
     // MARK: - Initialization
-    public init(contentViewController: Content, bottomSheetViewController: BottomSheet) {
+    public init(contentViewController: Content,
+                bottomSheetViewController: BottomSheet,
+                bottomSheetconfiguration: BottomSheetConfiguration) {
         self.contentViewController = contentViewController
         self.bottomSheetViewController = bottomSheetViewController
         
@@ -27,4 +29,12 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
     // MARK: - Children
     let contentViewController: Content
     let bottomSheetViewController: BottomSheet
+    
+    // MARK: - Configuration
+    public struct BottomSheetConfiguration {
+        let height: CGFloat
+        let initialOffset: CGFloat
+    }
+    
+    private let configuraton: BottomSheetConfiguration
 }
