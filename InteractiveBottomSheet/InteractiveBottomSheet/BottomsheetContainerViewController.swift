@@ -16,6 +16,10 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
         
         super.init(nibName: nil, bundle: nil)
     }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) is not supported")
+    }
 
     // MARK: - Children
     let contentViewController: Content
