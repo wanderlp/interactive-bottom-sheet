@@ -18,7 +18,7 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
                 bottomSheetConfiguration: BottomSheetConfiguration) {
         self.contentViewController = contentViewController
         self.bottomSheetViewController = bottomSheetViewController
-        self.configuraton = bottomSheetConfiguration
+        self.configuration = bottomSheetConfiguration
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -73,22 +73,25 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
     
     // Children view controllers
     private func setupUI() {
-        // 1
+        // 1 - Add both the contentViewController and bottomSheetViewController
+        //     to the container using addChild() method
         self.addChild(contentViewController)
         self.addChild(bottomSheetViewController)
         
-        // 2
+        // 2 - Add the root views of contentViewController and bottomSheetViewController
+        //     to the root view of the container
         self.view.addSubview(contentViewController.view)
         self.view.addSubview(bottomSheetViewController.view)
         
-        // 3
+        // 3 - Add the panGesture to the root view of the bottomSheetViewController
         bottomSheetViewController.view.addGestureRecognizer(panGesture)
         
-        // 4
+        // 4 - Apply translateAutoresizingMaskIntoConstraint = false. This is required
+        //     because we are creating our UI programmatically using constraints.
         contentViewController.view.translatesAutoresizingMaskIntoConstraints = false
         bottomSheetViewController.view.translatesAutoresizingMaskIntoConstraints = false
         
-        // 5
+        // 5 - Set constraints for the contentViewControllers's view
         NSLayoutConstraint.activate([
             contentViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             contentViewController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor),
@@ -96,13 +99,16 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
             contentViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
-        // 6
+        // 6 - Call the didMove(to:) method to inform the contentViewController that it
+        //     was added to the parent. The parent is the BottomSheetContainerViewController
         contentViewController.didMove(toParent: self)
         
-        // 7
+        // 7 - Set the top constraint of the bottom sheet to be aligned to the bottomAnchor
+        //     of the container's view. We also add an offset of the BottomSheetConfiguration
+        //     to make the bottom sheet a little bit visible in the bottom of the screen
         topConstraint = bottomSheetViewController.view.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -configuration.initialOffset)
         
-        // 8
+        // 8 - Set all the bottom sheet's constraints and activate them
         NSLayoutConstraint.activate([
             bottomSheetViewController.view.heightAnchor.constraint(equalToConstant: configuration.height),
             bottomSheetViewController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor),
@@ -110,7 +116,8 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
             topConstraint
         ])
         
-        // 9
+        // 9 - Call the didMove(to:) method on the bottomSheetViewController to inform it
+        //     that it was added to the bottomSheetContainerviewController
         bottomSheetViewController.didMove(toParent: self)
     }
 }
