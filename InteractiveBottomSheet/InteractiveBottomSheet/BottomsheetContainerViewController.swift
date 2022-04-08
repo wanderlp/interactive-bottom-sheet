@@ -142,4 +142,27 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
             self.state = .full
         }
     }
+    
+    // This method moves the bottom sheet to its initial point
+    // and sets the BottomSheetState to .initial. If animated, it
+    // performs a nice spring animation.
+    public func hideBottomSheet(animated: Bool = true) {
+        self.topConstraint.constant = -configuration.initialOffset
+        
+        if animated {
+            UIView.animate(withDuration: 0.3,
+                           delay: 0,
+                           usingSpringWithDamping: 0.8,
+                           initialSpringVelocity: 0.5,
+                           options: [.curveEaseOut],
+                           animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.state = .initial
+            })
+        } else {
+            self.view.layoutIfNeeded()
+            self.state = .initial
+        }
+    }
 }
