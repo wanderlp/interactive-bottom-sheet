@@ -40,4 +40,14 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
     }
     
     private let configuraton: BottomSheetConfiguration
+    
+    // MARK: - State
+    // BottomSheetState manages the state of the bottom
+    // sheet.
+    public enum BottomSheetState {
+        case initial
+        case full
+    }
+    
+    var state: BottomSheetState = .initial
 }
