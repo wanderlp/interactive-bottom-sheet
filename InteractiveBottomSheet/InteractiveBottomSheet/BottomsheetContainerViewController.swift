@@ -10,7 +10,7 @@ import UIKit
 // Content and BottomSheet types have to be
 // UIViewControllers, which means we will be
 // abe to specify any custom UIViewController.
-open class BottomSheetContainerViewController<Content: UIViewController, BottomSheet: UIViewController>: UIViewController {
+open class BottomSheetContainerViewController<Content: UIViewController, BottomSheet: UIViewController>: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Initialization
     public init(contentViewController: Content,
@@ -50,4 +50,24 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
     }
     
     var state: BottomSheetState = .initial
+    
+    
+    // MARK: - Properties that handle interaction and animation.
+    lazy var panGesture: UIPanGestureRecognizer = {
+        let pan = UIPanGestureRecognizer()
+        pan.delegate = self
+        return pan
+    }()
+    
+    // The bottom sheet view controller will move around the
+    // screen, so we need to get a hold of the top constraint
+    // of its view. For this reason, we have the topConstraint
+    // property, which we will repeatedly change and animate
+    // accordingly.
+    private var topConstraint = NSLayoutConstraint()
+    
+    // MARK: - UIGestureRecognizer Delegate
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }
