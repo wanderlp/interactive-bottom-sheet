@@ -53,9 +53,12 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
     
     
     // MARK: - Properties that handle interaction and animation.
+    @objc func handlePan(_ sender: UIPanGestureRecognizer) {}
+    
     lazy var panGesture: UIPanGestureRecognizer = {
         let pan = UIPanGestureRecognizer()
         pan.delegate = self
+        pan.addTarget(self, action: #selector(handlePan)) // Connect the panGesture
         return pan
     }()
     
