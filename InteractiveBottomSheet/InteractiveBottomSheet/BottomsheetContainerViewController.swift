@@ -228,7 +228,7 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
                     // 8 - Update the root view to show the constraint's change
                     self.view.layoutIfNeeded()
                 }
-            case .ended {
+            case .ended:
                 if self.state == .full {
                     // 1 - Check if the user has tried to move the bottom sheet
                     //     upwards. If this is true, bottom sheet should remain
@@ -259,15 +259,13 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
                         self.hideBottomSheet()
                     }
                 }
-            }
-            case .failed {
-                if self.stat == .full {
+            case .failed:
+                if self.state == .full {
                     self.showBottomSheet()
                 }
                 else {
                     self.hideBottomSheet()
                 }
-            }
             default: break
         }
     }
