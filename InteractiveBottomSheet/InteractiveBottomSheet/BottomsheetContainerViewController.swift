@@ -206,7 +206,7 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
                     //     200 points, we obtain 280 points. This means we would need
                     //     to place the bottom sheet 280 points from the bottom of the
                     //     container's view
-                    let newConstant = -(configutarion.initialOffset + yTranslationMagnitude)
+                    let newConstant = -(configuration.initialOffset + yTranslationMagnitude)
                     
                     // 5 - Assert that the user scrolls upward. Because the bottom
                     //     sheet is at its initial point, no downward scrolling is
