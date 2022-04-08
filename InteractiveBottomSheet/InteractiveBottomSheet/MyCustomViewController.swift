@@ -16,7 +16,7 @@ class MyCustomViewController: UIViewController {
         
         self.view.backgroundColor = .white
         self.view.layer.cornerRadius = 20
-        self.view.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         self.view.layer.shadowColor = UIColor.black.cgColor
         self.view.layer.shadowOffset = .init(width: 0, height: -2)
         self.view.layer.shadowRadius = 20
