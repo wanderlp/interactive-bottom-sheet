@@ -12,6 +12,7 @@
 		7B6DA9AB2800D23200D422E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B6DA9AA2800D23200D422E1 /* Assets.xcassets */; };
 		7B6DA9AE2800D23200D422E1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B6DA9AD2800D23200D422E1 /* Preview Assets.xcassets */; };
 		7B6DA9B52800D2F900D422E1 /* BottomSheetContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DA9B42800D2F900D422E1 /* BottomSheetContainerViewController.swift */; };
+		7B6DA9B72800FF2A00D422E1 /* WelcomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DA9B62800FF2A00D422E1 /* WelcomeContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		7B6DA9AA2800D23200D422E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B6DA9AD2800D23200D422E1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7B6DA9B42800D2F900D422E1 /* BottomSheetContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetContainerViewController.swift; sourceTree = "<group>"; };
+		7B6DA9B62800FF2A00D422E1 /* WelcomeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeContainerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				7B6DA9B42800D2F900D422E1 /* BottomSheetContainerViewController.swift */,
+				7B6DA9B62800FF2A00D422E1 /* WelcomeContainerViewController.swift */,
 				7B6DA9A62800D23000D422E1 /* InteractiveBottomSheetApp.swift */,
 				7B6DA9A82800D23000D422E1 /* ContentView.swift */,
 				7B6DA9AA2800D23200D422E1 /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B6DA9A92800D23000D422E1 /* ContentView.swift in Sources */,
+				7B6DA9B72800FF2A00D422E1 /* WelcomeContainerViewController.swift in Sources */,
 				7B6DA9B52800D2F900D422E1 /* BottomSheetContainerViewController.swift in Sources */,
 				7B6DA9A72800D23000D422E1 /* InteractiveBottomSheetApp.swift in Sources */,
 			);
