@@ -32,6 +32,8 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
     let bottomSheetViewController: BottomSheet
     
     // MARK: - Configuration
+    // BottomSheetConfiguration struct has the total height
+    // and the initial offset of the bottom sheet.
     public struct BottomSheetConfiguration {
         let height: CGFloat
         let initialOffset: CGFloat
