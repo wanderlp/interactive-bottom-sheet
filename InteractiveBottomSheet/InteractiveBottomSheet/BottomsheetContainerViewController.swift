@@ -7,6 +7,9 @@
 
 import UIKit
 
+// Content and BottomSheet types have to be
+// UIViewControllers, which means we will be
+// abe to specify any custom UIViewController.
 open class BottomSheetContainerViewController<Content: UIViewController, BottomSheet: UIViewController>: UIViewController {
     
     // MARK: - Initialization
