@@ -123,4 +123,23 @@ open class BottomSheetContainerViewController<Content: UIViewController, BottomS
         //     that it was added to the bottomSheetContainerviewController
         bottomSheetViewController.didMove(toParent: self)
     }
+    
+    // MARK: - Bottom Sheet Actions
+    // Moves the bottom sheet to its full height and sets the
+    // BottomSheetState to .full. If animated is set to true,
+    // it performs the movement with animation.
+    public func showBottomSheet(animated: Bool = true) {
+        self.topConstraint.constant = -configuration.height
+        
+        if animated {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.state = .full
+            })
+        } else {
+            self.view.layoutIfNeeded()
+            self.state = .full
+        }
+    }
 }
